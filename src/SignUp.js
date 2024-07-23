@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Alert, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Alert, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import Background from "./Background";
 import Btn from "./Btn";
 import { black } from "./Constants";
@@ -66,7 +66,7 @@ const SignUp = (props) => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{flex:1,alignItems:'center'}}>
       <Background>
         <ScrollView contentContainerStyle={styles.container}>
           <Text style={styles.registerText}>Register</Text>
@@ -100,11 +100,11 @@ const SignUp = (props) => {
               onChangeText={setPhone}
               value={phone}
             />
-            <Checkbox
+            {/* <Checkbox
               label="I agree to the terms & conditions"
               checked={isChecked}
               onValueChange={setIsChecked}
-            />
+            /> */}
             <View style={styles.registerButtonContainer}>
               <Btn
                 bgcolor={black}
@@ -116,7 +116,8 @@ const SignUp = (props) => {
           </View>
         </ScrollView>
       </Background>
-    </>
+    
+    </SafeAreaView>
   );
 };
 
