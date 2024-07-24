@@ -32,8 +32,7 @@ const SignUp = (props) => {
     }
     if (!password || password.length < 8) {
       Alert.alert(
-        "Validation Error",
-        "Password must be at least 8 characters long."
+        "Validation Error", "Password must be at least 8 characters long."
       );
       return false;
     }
@@ -51,8 +50,7 @@ const SignUp = (props) => {
     }
     if (!isChecked) {
       Alert.alert(
-        "Validation Error",
-        "You must agree to the terms and conditions."
+        "Validation Error","You must agree to the terms and conditions."
       );
       return false;
     }
@@ -131,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 55,
     fontWeight: "bold",
     marginVertical: 10,
-    paddingTop: 60,
+    paddingTop: 110,
     textAlign: "center",
   },
   formContainer: {

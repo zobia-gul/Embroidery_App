@@ -18,12 +18,13 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 100,
     alignItems: "center",
-    width: 280,
-    paddingVertical: 7,
+    height:45,
+    width: 250,
     marginVertical: 10,
   },
   text: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: "bold",
+    paddingTop:3,
   },
 });
