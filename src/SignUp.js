@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Alert, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Alert, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import Background from "./Background";
 import Btn from "./Btn";
 import { black } from "./Constants";
@@ -60,58 +60,57 @@ const SignUp = (props) => {
   };
 
   return (
-    <Background>
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.registerText}>Register</Text>
-        <View style={styles.formContainer}>
-          <Text style={styles.createAccountText}>Create a new account</Text>
-          <Field
-            placeholder="Email"
-            keyboardType="email-address"
-            onChangeText={setEmail}
-            value={email}
-          />
-          <Field
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={setPassword}
-            value={password}
-          />
-          <Field
-            placeholder="Age"
-            keyboardType="numeric"
-            onChangeText={setAge}
-            value={age}
-          />
-          <DropdownBtn
-            selectedOption={gender}
-            setSelectedOption={setGender}
-          />
-          <Field
-            placeholder="Phone: 03xx-xxxxxxx"
-            keyboardType="phone-pad"
-            onChangeText={setPhone}
-            value={phone}
-          />
-          <View style={styles.checkboxContainer}>
+    <>
+      <Background>
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={styles.registerText}>Register</Text>
+          <View style={styles.formContainer}>
+            <Text style={styles.createAccountText}>Create a new account</Text>
+            <Field
+              placeholder="Email"
+              keyboardType="email-address"
+              onChangeText={setEmail}
+              value={email}
+            />
+            <Field
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              value={password}
+            />
+            <Field
+              placeholder="Age"
+              keyboardType="numeric"
+              onChangeText={setAge}
+              value={age}
+            />
+            <DropdownBtn
+              selectedOption={gender}
+              setSelectedOption={setGender}
+            />
+            <Field
+              placeholder="Phone: 03xx-xxxxxxx"
+              keyboardType="phone-pad"
+              onChangeText={setPhone}
+              value={phone}
+            />
             <Checkbox
-              value={isChecked}
+              label="I agree to the terms & conditions"
+              checked={isChecked}
               onValueChange={setIsChecked}
-              color={isChecked ? black : undefined}
             />
-            <Text style={styles.checkboxLabel}>I agree to the terms & conditions</Text>
+            <View style={styles.registerButtonContainer}>
+              <Btn
+                bgcolor={black}
+                textColor="white"
+                btnLabel="Register"
+                Press={handleRegister}
+              />
+            </View>
           </View>
-          <View style={styles.registerButtonContainer}>
-            <Btn
-              bgcolor={black}
-              textColor="white"
-              btnLabel="Register"
-              Press={handleRegister}
-            />
-          </View>
-        </View>
-      </ScrollView>
-    </Background>
+        </ScrollView>
+      </Background>
+    </>
   );
 };
 
