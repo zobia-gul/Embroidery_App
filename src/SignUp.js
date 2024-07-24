@@ -4,7 +4,7 @@ import Background from "./Background";
 import Btn from "./Btn";
 import { black } from "./Constants";
 import Field from "./Field";
-import CheckBox from '@react-native-community/checkbox';
+import Checkbox from 'expo-checkbox'; // Importing expo-checkbox
 import DropdownBtn from "./DropdownBtn";
 
 const SignUp = (props) => {
@@ -94,10 +94,10 @@ const SignUp = (props) => {
             value={phone}
           />
           <View style={styles.checkboxContainer}>
-            <CheckBox
-              disabled={false}
+            <Checkbox
               value={isChecked}
-              onValueChange={(newValue) => setIsChecked(newValue)}
+              onValueChange={setIsChecked}
+              color={isChecked ? black : undefined}
             />
             <Text style={styles.checkboxLabel}>I agree to the terms & conditions</Text>
           </View>
