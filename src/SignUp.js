@@ -5,13 +5,12 @@ import {
   Alert,
   StyleSheet,
   ScrollView,
-  SafeAreaView,
 } from "react-native";
 import Background from "./Background";
 import Btn from "./Btn";
 import { black } from "./Constants";
 import Field from "./Field";
-import Checkbox from "expo-checkbox"; // Importing expo-checkbox
+import CheckBox from "expo-checkbox";
 import DropdownBtn from "./DropdownBtn";
 
 const SignUp = (props) => {
@@ -103,11 +102,13 @@ const SignUp = (props) => {
             onChangeText={setPhone}
             value={phone}
           />
-          <Checkbox
-            label="I agree to the terms & conditions"
-            checked={isChecked}
-            onValueChange={setIsChecked}
-          />
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={isChecked}
+              onValueChange={setIsChecked}
+            />
+            <Text style={styles.checkboxLabel}>I agree to the terms & conditions</Text>
+          </View>
           <View style={styles.registerButtonContainer}>
             <Btn
               bgcolor={black}
