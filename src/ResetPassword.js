@@ -42,7 +42,7 @@ const ResetPassword = (props) => {
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.headingText}>Reset password</Text>
+        <Text style={styles.headingText}>Forgot Password?</Text>
         <View style={styles.formContainer}>
           <Text style={styles.resetPasswordText}>Reset your password here</Text>
           <Field

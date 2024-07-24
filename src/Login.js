@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import Background from "./Background";
-import { black } from "./Constants";
+import { black, blue } from "./Constants";
 import Field from "./Field";
 import Btn from "./Btn";
 
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   forgotPasswordText: {
-    color: "blue",
-    fontSize: 19,
+    color: blue,
+    fontSize: 16,
     paddingRight: 50,
   },
   loginButtonContainer: {
