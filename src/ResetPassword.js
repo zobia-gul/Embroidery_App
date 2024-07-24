@@ -8,14 +8,22 @@ import Background from "./Background";
 const ResetPassword = (props) => {
   const [email, setEmail] = useState("");
   const [resetPassword, setResetPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const validateFields = () => {
     if (!email) {
       Alert.alert("Validation Error", "Please enter your Email.");
       return false;
     }
-    if (!resetPassword) {
-      Alert.alert("Validation Error", "Please enter your password.");
+    if (!resetPassword || resetPassword.length < 8) {
+      Alert.alert(
+        "Validation Error",
+        "Password must be at least 8 characters long."
+      );
+      return false;
+    }
+    if (!confirmPassword || confirmPassword != resetPassword) {
+      Alert.alert("Validation Error", "Password does not matches.");
       return false;
     }
     return true;
@@ -23,6 +31,10 @@ const ResetPassword = (props) => {
 
   const handleResetPassword = () => {
     if (validateFields()) {
+      Alert.alert(
+        "Your password has been successfully reset",
+        "Please log in with your new password."
+      );
       props.navigation.navigate("Login");
     }
   };
@@ -30,9 +42,9 @@ const ResetPassword = (props) => {
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.headingText}>Reset your password here</Text>
+        <Text style={styles.headingText}>Reset password</Text>
         <View style={styles.formContainer}>
-        <View>
+          <Text style={styles.resetPasswordText}>Reset your password here</Text>
           <Field
             placeholder="Email"
             keyboardType={"email-address"}
@@ -41,19 +53,24 @@ const ResetPassword = (props) => {
           />
           <Field
             placeholder="New Password"
-            secureTextEntry={true}
+            secureTextEntry={false}
             onChangeText={setResetPassword}
             value={resetPassword}
           />
-        </View>
-        <View>
-          <Btn
-            bgcolor={black}
-            textColor="white"
-            btnLabel="Reset Password"
-            Press={handleResetPassword}
+          <Field
+            placeholder="Confirm password"
+            secureTextEntry={false}
+            onChangeText={setConfirmPassword}
+            value={confirmPassword}
           />
-        </View>
+          <View style={styles.resetButtonContainer}>
+            <Btn
+              bgcolor={black}
+              textColor="white"
+              btnLabel="Reset Password"
+              Press={handleResetPassword}
+            />
+          </View>
         </View>
       </View>
     </Background>
@@ -71,16 +88,28 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     marginVertical: 10,
+    paddingTop: 110,
     textAlign: "center",
-    paddingTop:125,
-   },
-   formContainer: {
+  },
+  formContainer: {
     backgroundColor: "white",
     height: 700,
     width: 360,
     borderTopLeftRadius: 170,
     paddingTop: 100,
     alignItems: "center",
+  },
+  resetPasswordText: {
+    fontSize: 20,
+    color: black,
+    paddingBottom: 50,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  resetButtonContainer: {
+    marginTop: 30,
+    paddingTop: 50,
+    paddingTop: 80,
   },
 });
 

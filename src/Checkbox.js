@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckBox } from 'react-native-web'; // Import CheckBox from react-native-web
+import CheckBox from '@react-native-community/checkbox'; // Import CheckBox from @react-native-community/checkbox
 import { View, Text, StyleSheet } from 'react-native';
 
 const Checkbox = ({ label, onValueChange, checked }) => {
@@ -15,7 +15,7 @@ const Checkbox = ({ label, onValueChange, checked }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingTop: 10,
   },
-});
+};
 
 export default Checkbox;
