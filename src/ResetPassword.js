@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingTop: 110,
     textAlign: "center",
+    paddingBottom:10
   },
   formContainer: {
     backgroundColor: "white",
