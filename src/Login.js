@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import Background from "./Background";
 import { black, blue } from "./Constants";
 import Field from "./Field";
 import Btn from "./Btn";
+import { useRoute } from '@react-navigation/native';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const route = useRoute();
+  
+  useEffect(() => {
+    if (route.params?.resetForm) {
+      setEmail('');
+      setPassword('');
+    }
+  }, [route.params?.resetForm]);
 
   const validateFields = () => {
     if (!email) {
