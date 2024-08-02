@@ -1,6 +1,5 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Ionicons } from 'react-native-vector-icons'; // Import icons
 import Home from './Home';
 import Profile from './Profile';
 import Settings from './Settings';
