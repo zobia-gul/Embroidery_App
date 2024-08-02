@@ -11,31 +11,38 @@ const ResetPassword = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const validateFields = () => {
-    if (!email) {
-      Alert.alert("Validation Error", "Please enter your Email.");
+    try {
+      if (!email) {
+        Alert.alert("Validation Error", "Please enter your Email.");
+        return false;
+      }
+      if (!resetPassword || resetPassword.length < 8) {
+        Alert.alert(
+          "Validation Error",
+          "Password must be at least 8 characters long."
+        );
+        return false;
+      }
+      if (!confirmPassword || confirmPassword !== resetPassword) {
+        Alert.alert("Validation Error", "Passwords do not match.");
+        return false;
+      }
+      return true;
+    } catch (error) {
+      Alert.alert("Validation Error", "An error occurred during validation.");
       return false;
     }
-    if (!resetPassword || resetPassword.length < 8) {
-      Alert.alert(
-        "Validation Error",
-        "Password must be at least 8 characters long."
-      );
-      return false;
-    }
-    if (!confirmPassword || confirmPassword != resetPassword) {
-      Alert.alert("Validation Error", "Password does not matches.");
-      return false;
-    }
-    return true;
   };
 
   const handleResetPassword = () => {
     if (validateFields()) {
       Alert.alert(
-        "Your password has been successfully reset",
-        "Please log in with your new password."
+        "Success",
+        "Your password has been successfully reset. Please log in with your new password."
       );
       props.navigation.navigate("Login");
+    } else {
+      Alert.alert("Reset Password Failed");
     }
   };
 
@@ -47,19 +54,19 @@ const ResetPassword = (props) => {
           <Text style={styles.resetPasswordText}>Reset your password here</Text>
           <Field
             placeholder="Email"
-            keyboardType={"email-address"}
+            keyboardType="email-address"
             onChangeText={setEmail}
             value={email}
           />
           <Field
             placeholder="New Password"
-            secureTextEntry={false}
+            secureTextEntry
             onChangeText={setResetPassword}
             value={resetPassword}
           />
           <Field
-            placeholder="Confirm password"
-            secureTextEntry={false}
+            placeholder="Confirm Password"
+            secureTextEntry
             onChangeText={setConfirmPassword}
             value={confirmPassword}
           />
@@ -90,7 +97,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingTop: 110,
     textAlign: "center",
-    paddingBottom:10
   },
   formContainer: {
     backgroundColor: "white",
@@ -109,8 +115,6 @@ const styles = StyleSheet.create({
   },
   resetButtonContainer: {
     marginTop: 30,
-    paddingTop: 50,
-    paddingTop: 80,
   },
 });
 
