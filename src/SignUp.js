@@ -43,7 +43,7 @@ const SignUp = (props) => {
       );
       return false;
     }
-    if (!age || age > 100 || age < 13) {
+    if (!age || age < 13) {
       Alert.alert("Validation Error", "Please enter a valid age.");
       return false;
     }
