@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   View,
   Text,
@@ -7,14 +7,16 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation, useIsFocused } from "@react-navigation/native";
-import { Ionicons } from "react-native-vector-icons"; // Import icons
+import { useNavigation} from "@react-navigation/native";
+import { Ionicons } from "react-native-vector-icons";
+import AuthContext from "./AuthContext";
 
 const CustomDrawerContent = (props) => {
   const navigation = useNavigation();
-  const isFocused = useIsFocused(); // To handle focus state
+  const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
+    logout(); // Update the authentication state
     navigation.navigate("Login", { resetForm: true });
   };
 

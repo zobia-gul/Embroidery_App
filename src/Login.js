@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react"; // Import useContext
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import Background from "./Background";
 import { black, blue } from "./Constants";
 import Field from "./Field";
 import Btn from "./Btn";
 import { useRoute } from '@react-navigation/native';
+import AuthContext from "./AuthContext"; // Import AuthContext
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const route = useRoute();
+  const { login } = useContext(AuthContext); // Use the login function from context
   
   useEffect(() => {
     if (route.params?.resetForm) {
@@ -32,6 +34,7 @@ const Login = (props) => {
 
   const handleLogin = () => {
     if (validateFields()) {
+      login(); // Update the authentication state
       props.navigation.navigate("Home");
     }
   };

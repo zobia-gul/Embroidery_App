@@ -36,10 +36,7 @@ const ResetPassword = (props) => {
 
   const handleResetPassword = () => {
     if (validateFields()) {
-      Alert.alert(
-        "Success",
-        "Your password has been successfully reset."
-      );
+      Alert.alert("Success", "Your password has been successfully reset.");
       props.navigation.navigate("Login");
     } else {
       Alert.alert("Reset Password Failed");
