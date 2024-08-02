@@ -38,7 +38,7 @@ const ResetPassword = (props) => {
     if (validateFields()) {
       Alert.alert(
         "Success",
-        "Your password has been successfully reset. Please log in with your new password."
+        "Your password has been successfully reset."
       );
       props.navigation.navigate("Login");
     } else {
@@ -60,13 +60,11 @@ const ResetPassword = (props) => {
           />
           <Field
             placeholder="New Password"
-            secureTextEntry
             onChangeText={setResetPassword}
             value={resetPassword}
           />
           <Field
             placeholder="Confirm Password"
-            secureTextEntry
             onChangeText={setConfirmPassword}
             value={confirmPassword}
           />

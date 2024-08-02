@@ -3,21 +3,13 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './Home';
 import Profile from './Profile';
 import Settings from './Settings';
-import CustomDrawerContent from './CustomDrawerContent'; // Import the custom drawer content
+import CustomDrawerContent from './CustomDrawerContent';
 
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
-      screenOptions={{
-        drawerStyle: {
-          width: 240, // Adjust the width of the drawer
-        },
-        drawerPosition: 'left',
-      }}
-    >
+    <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Settings" component={Settings} />

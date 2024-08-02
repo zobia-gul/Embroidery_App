@@ -6,7 +6,6 @@ import StartPage from './src/StartPage';
 import SignUp from './src/SignUp';
 import Login from './src/Login';
 import ResetPassword from './src/ResetPassword';
-import Home from './src/Home'; 
 import DrawerNavigator from './src/DrawerNavigator'
 
 const Stack = createNativeStackNavigator();
@@ -21,7 +20,6 @@ function App() {
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Home" component={DrawerNavigator} />
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          {/* <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

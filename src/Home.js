@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';  
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { View, Text, StyleSheet } from 'react-native'; 
 
 
 const Home = () => {
-  const navigation = useNavigation(); // Get navigation object
-
   return (
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Welcome to Our App!</Text>
