@@ -48,6 +48,8 @@ const CustomDrawerContent = (props) => {
                     ? "person"
                     : routeName === "Settings"
                     ? "settings"
+                    : routeName === "Cart"
+                    ? "cart"
                     : "home"
                 } // Default icon
                 size={24}
