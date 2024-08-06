@@ -7,7 +7,8 @@ import SignUp from './src/SignUp';
 import Login from './src/Login';
 import ResetPassword from './src/ResetPassword';
 import DrawerNavigator from './src/DrawerNavigator';
-import { AuthProvider } from './src/AuthContext'; // Import AuthProvider
+import { AuthProvider } from './src/AuthContext';
+import ProductDetail from './src/ProductDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ function App() {
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="Home" component={DrawerNavigator} />
             <Stack.Screen name="ResetPassword" component={ResetPassword} />
+            <Stack.Screen name="ProductDetail" component={ProductDetail} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

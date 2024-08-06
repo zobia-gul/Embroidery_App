@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "react-native-vector-icons";
 import AuthContext from "./AuthContext";
 
@@ -54,7 +54,7 @@ const CustomDrawerContent = (props) => {
                 color={
                   props.state.index ===
                   props.state.routeNames.indexOf(routeName)
-                    ? "#007bff"
+                    ? "#20B2AA"
                     : "#000"
                 }
                 style={styles.drawerIcon}
@@ -66,7 +66,7 @@ const CustomDrawerContent = (props) => {
                     color:
                       props.state.index ===
                       props.state.routeNames.indexOf(routeName)
-                        ? "#007bff"
+                        ? "#20B2AA"
                         : "#000",
                   },
                 ]}
