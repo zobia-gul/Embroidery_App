@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useContext } from "react"; // Import useContext
+import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import Background from "./Background";
 import { black, blue } from "./Constants";
 import Field from "./Field";
 import Btn from "./Btn";
 import { useRoute } from '@react-navigation/native';
-import AuthContext from "./AuthContext"; // Import AuthContext
+import AuthContext from "./AuthContext";
 
-const Login = (props) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const route = useRoute();
-  const { login } = useContext(AuthContext); // Use the login function from context
+  const { login } = useContext(AuthContext);
   
+
   useEffect(() => {
     if (route.params?.resetForm) {
       setEmail('');
@@ -22,7 +23,7 @@ const Login = (props) => {
 
   const validateFields = () => {
     if (!email) {
-      Alert.alert("Validation Error", "Please enter your Email.");
+      Alert.alert("Validation Error", "Please enter your email.");
       return false;
     }
     if (!password) {
@@ -35,7 +36,7 @@ const Login = (props) => {
   const handleLogin = () => {
     if (validateFields()) {
       login(); // Update the authentication state
-      props.navigation.navigate("Home");
+      navigation.navigate("Home");
     }
   };
 
@@ -48,19 +49,19 @@ const Login = (props) => {
           <Text style={styles.subtitleText}>Login to your account</Text>
           <Field
             placeholder="Email"
-            keyboardType={"email-address"}
+            keyboardType="email-address"
             onChangeText={setEmail}
             value={email}
           />
           <Field
             placeholder="Password"
-            secureTextEntry={true}
+            secureTextEntry
             onChangeText={setPassword}
             value={password}
           />
           <View style={styles.forgotPasswordContainer}>
             <TouchableOpacity
-              onPress={() => props.navigation.navigate("ResetPassword")}
+              onPress={() => navigation.navigate("ResetPassword")}
             >
               <Text style={styles.forgotPasswordText}>Forgot password?</Text>
             </TouchableOpacity>

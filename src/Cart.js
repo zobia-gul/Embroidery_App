@@ -1,38 +1,29 @@
-import React, { useState } from 'react';
+import React, { useContext } from "react";
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from 'react-native-vector-icons';
+import { useCart } from './CartContext'; // Ensure CartContext is correctly imported
 
 const Cart = ({ navigation }) => {
-  // Example initial cart data
-  const [cartItems, setCartItems] = useState([
-    // Add sample cart items here
-    {
-      id: '1',
-      name: 'Hand Embroidered Scarf',
-      price: '45',
-      image: require('./assets/scarf.jpg'),
-    },
-    {
-      id: '2',
-      name: 'Hand Embroidered Bag',
-      price: '60',
-      image: require('./assets/bag.jpg'),
-    },
-  ]);
+  const { cartItems, removeFromCart, checkout } = useCart();
 
   const handleRemoveItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    removeFromCart(id);
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
+    return cartItems.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0).toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    checkout();
+    navigation.navigate("Login", { resetForm: true });
   };
 
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
       <View style={styles.itemDetails}>
         <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemPrice}>PKR {item.price}</Text>
+        <Text style={styles.itemPrice}>PKR {item.price} x {item.quantity}</Text>
       </View>
       <TouchableOpacity onPress={() => handleRemoveItem(item.id)}>
         <Ionicons name="trash-bin" size={24} color="#ff0000" />
@@ -45,15 +36,15 @@ const Cart = ({ navigation }) => {
       <FlatList
         data={cartItems}
         renderItem={renderCartItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id.toString()}
         ListFooterComponent={
           <View style={styles.footer}>
             <Text style={styles.totalText}>Total: PKR {calculateTotal()}</Text>
             <TouchableOpacity
               style={styles.checkoutButton}
-              onPress={() => navigation.navigate('Checkout')} // Navigate to Checkout screen
+              onPress={handleCheckout}
             >
-              <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+              <Text style={styles.checkoutButtonText}>Place order & Checkout</Text>
             </TouchableOpacity>
           </View>
         }
