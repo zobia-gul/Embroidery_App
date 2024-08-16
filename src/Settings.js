@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from "react-native";
 const Settings = () => {
   return (
       <View style={styles.container}>
-        <Text style={styles.welcomeText}>Settings</Text>
+        <Text style={styles.welcomeText}>Settings Screen</Text>
       </View>
     
   );
